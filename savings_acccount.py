@@ -2,11 +2,10 @@ from account import Account
 
 
 class SavingsAccount(Account):
-    limit = 1000  # Example limit for withdrawals
-
-    def __init__(self, balance):
+    def __init__(self, balance, limit):
         Account.__init__(self, balance)
+        self.limit = limit
 
     def withdraw(self, amount):
-        if amount < 10000:
+        if amount < self.limit:
             super().withdraw(amount)
