@@ -19,6 +19,9 @@ with st.form("current_account_form"):
                 st.session_state.account.deposit(amount)
                 st.success(f"Successfuly Depositted N{amount}")
             # add elif statement here for withdraw function
+            elif operations == "Withdraw":
+                st.session_state.account.withdraw(amount)
+                st.success(f"Successfully Withdrew N{amount}!")
             balance_placeholder.subheader(f"Balance: N{st.session_state.account.balance}")
         except ValueError as e:
             st.error(str(e))
