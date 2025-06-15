@@ -3,11 +3,24 @@ from current_account import CurrentAccount
 
 if 'account' not in st.session_state:
     st.session_state.account = CurrentAccount(balance= 10000 )
+if 'msg' not in st.session_state:
+    st.session_state.msg = ""
+if 'msg_type' not in st.session_state:
+    st.session_state.msg_type = ""
+
 st.set_page_config(page_title="Current Account", layout="centered")
 st.title("Current Account")
 
+# Show message at the top of the page
+if st.session_state.msg:
+    if st.session_state.msg_type == "success":
+        st.success(st.session_state.msg)
+    elif st.session_state.msg_type == "error":
+        st.error(st.session_state.msg)
+
 balance_placeholder = st.empty()
 balance_placeholder.subheader(f"Balance: N{st.session_state.account.balance}")
+
 with st.form("current_account_form"):
     amount = st.number_input("Enter amount", min_value=1000, step=100)
     operations = st.selectbox("Deposit or withdraw", ("Deposit", "Withdraw"))
@@ -17,11 +30,18 @@ with st.form("current_account_form"):
         try:
             if operations == "Deposit":
                 st.session_state.account.deposit(amount)
-                st.success(f"Successfuly Depositted N{amount}")
+                st.session_state.msg = f"✅Deposit of ₦{amount} successful!"
+                st.session_state.msg_type = "success"
             # add elif statement here for withdraw function
             elif operations == "Withdraw":
-                st.session_state.account.withdraw(amount)
-                st.success(f"Successfully Withdrew N{amount}!")
-            balance_placeholder.subheader(f"Balance: N{st.session_state.account.balance}")
+                if amount > st.session_state.account.balance:
+                    st.session_state.msg = f"❌Error: Insufficient Funds"
+                    st.session_state.msg_type = "error"
+                else:
+                    st.session_state.account.withdraw(amount)
+                    st.session_state.msg = f"✅Withdrawal of ₦{amount} successful!"
+                    st.session_state.msg_type = "success"
+            balance_placeholder.subheader(f"Balance: ₦{st.session_state.account.balance}")
         except ValueError as e:
-            st.error(str(e))
+            st.error(f"An error occurred: {e}")
+            st.session_state.msg_type = "error"
