@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25312f80-fd30-4285-adfe-3f8fbe63e23d" name="Changes" comment="Minor updates">
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python-oop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python-oop.iml" afterDir="false" />
+    <list default="true" id="25312f80-fd30-4285-adfe-3f8fbe63e23d" name="Changes" comment="I put withdrawal limits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/current_account_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/current_account_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/savings_account_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/savings_account_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/savings_acccount.py" beforeDir="false" afterPath="$PROJECT_DIR$/savings_account.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749843844050</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="I put withdrawal limits">
+      <option name="closed" value="true" />
+      <created>1750108922764</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750108922766</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +127,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Progress made in class" />
     <MESSAGE value="Minor updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor updates" />
+    <MESSAGE value="I put withdrawal limits" />
+    <option name="LAST_COMMIT_MESSAGE" value="I put withdrawal limits" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_oop$home.coverage" NAME="home Coverage Results" MODIFIED="1749759409123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
