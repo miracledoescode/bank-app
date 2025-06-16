@@ -1,23 +1,36 @@
 import streamlit as st
+from savings_account import SavingsAccount
+from account import Account
 
-st.set_page_config(page_title="Savings Account", layout="centered")
-st.title("My Savings Account")
-st.subheader("Balance: ₦10000")
-st.subheader("Limit: ₦5000")
 
-if submit:
-    try:
-        if operations == "Deposit":
-            st.success(f"Deposit of ₦{amount} successful!✅")
-        elif operations == "Withdraw":
-            if amount > 5000:  # Assuming limit is 5000
-                st.error("Error: Withdrawal exceeds limit")
+def main():
+    st.set_page_config(page_title="Savings Account", layout="centered")
+    st.title("🏦 Savings Account overview")
+    choice = st.selectbox("Do you want to", ["Deposit", "Withdraw"])
+    name = st.text_input("Enter Account Holder Name", "")
+    amount = st.number_input("Enter amount", min_value=0, step=100)
+    st.subheader(f"Welcome, {name}")
+
+    # Initialize account in session state
+    if "account" not in st.session_state or st.session_state.get("account_name") != name:
+        st.session_state.account = SavingsAccount(0,5000)
+        st.session_state.account_name = name
+
+    account = st.session_state.account
+
+    st.info(f"💵 Current Balance: ${account.get_balance():.2f}")
+
+    if st.button("Submit Transactions"):
+        if choice == "Deposit":
+            account.deposit(amount)
+            st.success(f"Deposited ${amount:.2f} in your account")
+        elif choice == "Withdraw":
+            success = account.withdraw(amount)
+            if success:
+                st.success(f"Withdrew ${amount:.2f} from your account")
             else:
-                st.success(f"Withdrawal of ₦{amount} successful!✅")
-    except ValueError as e:
-        st.error(f"An error occurred: {e}")
+                # Only SavingsAccount is supported here, so show withdrawal limit error
+                st.error(f"❌ Withdrawal failed: Max ${getattr(account, 'withdrawal_limit', 'N/A')} or insufficient balance.")
 
-with st.form("savings_form"):
-    amount = st.number_input("Enter amount", min_value=1000)
-    operations = st.selectbox("Deposit or withdraw", ("Deposit", "Withdraw"))
-    submit = st.form_submit_button("Submit")
+if __name__ == "__main__":
+    main()
