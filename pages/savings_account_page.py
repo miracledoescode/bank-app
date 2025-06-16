@@ -17,9 +17,10 @@ def main():
         st.session_state.account_name = name
 
     account = st.session_state.account
-
-    st.info(f"💵 Current Balance: ${account.get_balance():.2f}")
-
+    
+    balance_placeholder = st.empty()
+    balance_placeholder.subheader(f"Balance: ${st.session_state.account.balance}")
+    
     if st.button("Submit Transactions"):
         if choice == "Deposit":
             account.deposit(amount)
