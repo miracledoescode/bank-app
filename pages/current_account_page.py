@@ -19,7 +19,7 @@ if st.session_state.msg:
         st.error(st.session_state.msg)
 
 balance_placeholder = st.empty()
-balance_placeholder.subheader(f"Balance: N{st.session_state.account.balance}")
+balance_placeholder.subheader(f"Balance: ${st.session_state.account.balance}")
 
 with st.form("current_account_form"):
     amount = st.number_input("Enter amount", min_value=1000, step=100)
